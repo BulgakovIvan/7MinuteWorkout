@@ -5,4 +5,5 @@
     <string name="str_start">START</string>
     <string name="restTimerName">GET READY FOR</string>
     <string name="exerciseTimerName">Exercise name</string>
+    <string name="upcoming_exercise">UPCOMING EXERCISE:</string>
 </resources>

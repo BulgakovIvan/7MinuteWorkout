@@ -12,6 +12,7 @@
         android:layout_height="?android:attr/actionBarSize"
         android:background="@color/white"/>
 
+<!-- Restview -->
     <LinearLayout
         android:id="@+id/llRestView"
         android:layout_width="match_parent"
@@ -19,7 +20,8 @@
         android:layout_below="@id/toolbar_exercise_activity"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="visible"
+        tools:visibility="invisible">
 
         <TextView
             android:layout_width="wrap_content"
@@ -69,8 +71,28 @@
 
         </FrameLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/upcoming_exercise"
+            android:textSize="20sp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvUpcomingExerciseName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="exercise"
+            android:textColor="@color/black"/>
+
     </LinearLayout>
 
+<!-- ExerciseView -->
     <LinearLayout
         android:id="@+id/llExerciseView"
         android:layout_width="match_parent"
@@ -78,7 +100,17 @@
         android:layout_below="@id/toolbar_exercise_activity"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ImageView
+            android:id="@+id/ivImage"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/image"
+            android:src="@drawable/ic_jumping_jacks"/>
 
         <TextView
             android:id="@+id/tvExerciseName"

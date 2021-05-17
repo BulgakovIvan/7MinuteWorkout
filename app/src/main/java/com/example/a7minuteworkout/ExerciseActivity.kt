@@ -1,5 +1,6 @@
 package com.example.a7minuteworkout
 
+import android.app.Dialog
 import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
@@ -8,10 +9,9 @@ import android.os.CountDownTimer
 import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
-import android.widget.Adapter
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a7minuteworkout.databinding.ActivityExerciseBinding
+import com.example.a7minuteworkout.databinding.DialogCustomBackConfirmationBinding
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -46,7 +46,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
 
         binding.toolbarExerciseActivity.setNavigationOnClickListener {
-            onBackPressed()
+            customDialogForBackButton()
         }
 
         exerciseList = Constants.defaultExerciseList()
@@ -185,5 +185,23 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         exerciseAdapter = ExerciseStatusAdapter(exerciseList!!, this)
         binding.rvExerciseStatus.adapter = exerciseAdapter
+    }
+
+    private fun customDialogForBackButton() {
+        val dialogBinding = DialogCustomBackConfirmationBinding.inflate(layoutInflater)
+
+        val customDialog = Dialog(this)
+        customDialog.setContentView(dialogBinding.root)
+
+        dialogBinding.tvYes.setOnClickListener {
+            finish()
+            customDialog.dismiss()
+        }
+
+        dialogBinding.tvNo.setOnClickListener {
+            customDialog.dismiss()
+        }
+
+        customDialog.show()
     }
 }

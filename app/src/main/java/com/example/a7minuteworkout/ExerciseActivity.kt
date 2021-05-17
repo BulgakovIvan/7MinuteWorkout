@@ -7,7 +7,9 @@ import android.os.CountDownTimer
 import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
+import android.widget.Adapter
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a7minuteworkout.databinding.ActivityExerciseBinding
 import java.util.*
 import kotlin.collections.ArrayList
@@ -16,6 +18,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private lateinit var binding: ActivityExerciseBinding
     private lateinit var tts: TextToSpeech
     private lateinit var player: MediaPlayer
+    private lateinit var exerciseAdapter: ExerciseStatusAdapter
 
     private var restTimer: CountDownTimer? = null
     private var restProgress = 0
@@ -47,6 +50,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         exerciseList = Constants.defaultExerciseList()
 
         setupRestView()
+        setupExerciseStatusRecyclerView()
     }
 
     override fun onInit(status: Int) {
@@ -161,5 +165,13 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private fun speakOut(text: String) {
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
+    }
+
+    private fun setupExerciseStatusRecyclerView() {
+        binding.rvExerciseStatus.layoutManager = LinearLayoutManager(this,
+                                                    LinearLayoutManager.HORIZONTAL,false)
+
+        exerciseAdapter = ExerciseStatusAdapter(exerciseList!!, this)
+        binding.rvExerciseStatus.adapter = exerciseAdapter
     }
 }

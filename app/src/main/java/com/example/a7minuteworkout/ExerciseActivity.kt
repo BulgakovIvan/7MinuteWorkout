@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a7minuteworkout.databinding.ActivityExerciseBinding
+import com.example.a7minuteworkout.databinding.DialogCustomBackConfirmationBinding
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -187,7 +188,20 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     private fun customDialogForBackButton() {
-        val newFragment = DialogForBackButton()
-        newFragment.show(supportFragmentManager, "back")
+        val dialogBinding = DialogCustomBackConfirmationBinding.inflate(layoutInflater)
+
+        val customDialog = Dialog(this)
+        customDialog.setContentView(dialogBinding.root)
+
+        dialogBinding.tvYes.setOnClickListener {
+            finish()
+            customDialog.dismiss()
+        }
+
+        dialogBinding.tvNo.setOnClickListener {
+            customDialog.dismiss()
+        }
+
+        customDialog.show()
     }
 }

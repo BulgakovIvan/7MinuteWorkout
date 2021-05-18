@@ -9,18 +9,19 @@ import androidx.fragment.app.DialogFragment
 class DialogForBackButton: DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
-            // Use the Builder class for convenient dialog construction
             val builder = AlertDialog.Builder(it)
-            builder.setMessage(R.string.dialog_fire_missiles)
-                    .setPositiveButton(R.string.fire,
+            builder.setTitle("Are you sure?")
+                    .setMessage("This will stop your workout. You\'ve come this far, are you sure you want to quit?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes",
                             DialogInterface.OnClickListener { dialog, id ->
-                                // FIRE ZE MISSILES!
+                                activity!!.finish()
+                                dialog.cancel()
                             })
-                    .setNegativeButton(R.string.cancel,
+                    .setNegativeButton("No",
                             DialogInterface.OnClickListener { dialog, id ->
-                                // User cancelled the dialog
+                                dialog.cancel()
                             })
-            // Create the AlertDialog object and return it
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }

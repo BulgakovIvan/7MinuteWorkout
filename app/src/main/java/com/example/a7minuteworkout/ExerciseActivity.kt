@@ -1,6 +1,5 @@
 package com.example.a7minuteworkout
 
-import android.app.Dialog
 import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +8,8 @@ import android.os.CountDownTimer
 import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
+import android.widget.Adapter
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a7minuteworkout.databinding.ActivityExerciseBinding
 import java.util.*
@@ -45,7 +46,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
 
         binding.toolbarExerciseActivity.setNavigationOnClickListener {
-            customDialogForBackButton()
+            onBackPressed()
         }
 
         exerciseList = Constants.defaultExerciseList()

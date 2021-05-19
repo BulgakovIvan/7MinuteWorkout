@@ -11,6 +11,11 @@ import java.math.RoundingMode
 class BMIActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBMIBinding
 
+    val METRIC_UNITS_VIEW = "METRIC_UNIT_VIEW"
+    val US_UNITS_VIEW = "US_UNIT_VIEW"
+
+    var currentVisibleView: String = METRIC_UNITS_VIEW
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBMIBinding.inflate(layoutInflater)
@@ -41,6 +46,16 @@ class BMIActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please enter valid values.", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun makeVisibleMetricUnitsView() {
+        currentVisibleView = METRIC_UNITS_VIEW
+        binding.tilMetricUnitWeight.visibility = View.VISIBLE
+        binding.tilMetricUnitHeight.visibility = View.VISIBLE
+
+        binding.tilUsUnitWeight.visibility = View.GONE
+        binding.llUsUnitsHeight.visibility = View.GONE
+        binding.llDisplayBMIResult.visibility = View.GONE
     }
 
     private fun displayBMIResult(bmi: Float) {
@@ -76,7 +91,8 @@ class BMIActivity : AppCompatActivity() {
         // This is used to round the result value to 2 decimal values after "."
         val bmiValue = BigDecimal(bmi.toDouble()).setScale(2, RoundingMode.HALF_EVEN).toString()
 
-        binding.tvYourBMI.visibility = View.VISIBLE
+        binding.llDisplayBMIResult.visibility = View.VISIBLE
+
         binding.tvBMIValue.text = bmiValue
         binding.tvBMIType.text = bmiLabel
         binding.tvBMIDescription.text = bmiDescription

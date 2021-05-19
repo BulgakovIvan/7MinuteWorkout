@@ -68,7 +68,7 @@ class BMIActivity : AppCompatActivity() {
         binding.tilUsUnitWeight.visibility = View.GONE
         binding.llUsUnitsHeight.visibility = View.GONE
 
-        binding.llDisplayBMIResult.visibility = View.GONE
+        binding.llDisplayBMIResult.visibility = View.INVISIBLE
     }
 
     private fun makeVisibleUsUnitsView() {
@@ -83,7 +83,7 @@ class BMIActivity : AppCompatActivity() {
         binding.tilUsUnitWeight.visibility = View.VISIBLE
         binding.llUsUnitsHeight.visibility = View.VISIBLE
 
-        binding.llDisplayBMIResult.visibility = View.GONE
+        binding.llDisplayBMIResult.visibility = View.INVISIBLE
     }
 
     private fun displayBMIResult(bmi: Float) {

@@ -46,6 +46,15 @@ class BMIActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please enter valid values.", Toast.LENGTH_SHORT).show()
             }
         }
+
+        makeVisibleMetricUnitsView()
+        binding.rgUnits.setOnCheckedChangeListener { _, checkId ->
+            if (checkId == R.id.rbMetricUnits) {
+                makeVisibleMetricUnitsView()
+            } else {
+                makeVisibleUsUnitsView()
+            }
+        }
     }
 
     private fun makeVisibleMetricUnitsView() {

@@ -53,8 +53,27 @@ class BMIActivity : AppCompatActivity() {
         binding.tilMetricUnitWeight.visibility = View.VISIBLE
         binding.tilMetricUnitHeight.visibility = View.VISIBLE
 
+        binding.etMetricUnitWeight.text!!.clear()
+        binding.etMetricUnitHeight.text!!.clear()
+
         binding.tilUsUnitWeight.visibility = View.GONE
         binding.llUsUnitsHeight.visibility = View.GONE
+
+        binding.llDisplayBMIResult.visibility = View.GONE
+    }
+
+    private fun makeVisibleUsUnitsView() {
+        currentVisibleView = US_UNITS_VIEW
+        binding.tilMetricUnitWeight.visibility = View.GONE
+        binding.tilMetricUnitHeight.visibility = View.GONE
+
+        binding.etUsUnitWeight.text!!.clear()
+        binding.etUsUnitHeightFeet.text!!.clear()
+        binding.etUsUnitHeightInch.text!!.clear()
+
+        binding.tilUsUnitWeight.visibility = View.VISIBLE
+        binding.llUsUnitsHeight.visibility = View.VISIBLE
+
         binding.llDisplayBMIResult.visibility = View.GONE
     }
 

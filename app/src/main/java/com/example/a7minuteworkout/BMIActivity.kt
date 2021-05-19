@@ -22,5 +22,25 @@ class BMIActivity : AppCompatActivity() {
         binding.toolbarBmiActivity.setNavigationOnClickListener {
             onBackPressed()
         }
+
+        binding.btnCalculateUnits.setOnClickListener {
+            if (validateMetricUnits()) {
+                val weightValue : Float = binding.etMetricUnitWeight.text.toString().toFloat()
+                val heightValue : Float = binding.etMetricUnitHeight.text.toString().toFloat() / 1_000
+
+                val bmi = weightValue / (heightValue * heightValue)
+            }
+        }
+    }
+
+    private fun validateMetricUnits() : Boolean {
+        var isValid = true
+
+        if (binding.etMetricUnitWeight.text.toString().isEmpty())
+            isValid = false
+        if (binding.etMetricUnitHeight.text.toString().isEmpty())
+            isValid = false
+
+        return isValid
     }
 }

@@ -25,7 +25,6 @@ class BMIActivity : AppCompatActivity() {
         val actionbar = supportActionBar
         if (actionbar != null) {
             actionbar.setDisplayHomeAsUpEnabled(true)
-            actionbar.title = "CALCULATE BMI"
         }
 
         binding.toolbarBmiActivity.setNavigationOnClickListener {

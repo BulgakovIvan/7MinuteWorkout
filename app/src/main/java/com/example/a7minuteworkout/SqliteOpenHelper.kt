@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 
 class SqliteOpenHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
@@ -33,7 +34,8 @@ class SqliteOpenHelper(context: Context, factory: SQLiteDatabase.CursorFactory?)
         val values = ContentValues()
         values.put(COLUMN_COMPLETED_DATE, date)
         val db = this.writableDatabase
-        db.insert(TABLE_HISTORY, null, values)
+        var result = db.insert(TABLE_HISTORY, null, values)
+        Log.e("ups", "result: $result")
         db.close()
     }
 }
